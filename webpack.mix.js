@@ -16,7 +16,6 @@ mix
             },
         },
     })
-
     .options({
         hmrOptions: {
             port: '3030',
@@ -35,6 +34,8 @@ mix
     .sass('resources/sass/enso.scss', 'public/css')
     .sass('node_modules/@enso-ui/themes/bulma/light.scss', 'public/themes/light/bulma.min.css')
     .sass('node_modules/@enso-ui/themes/bulma/dark.scss', 'public/themes/dark/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/light-rtl.scss', 'public/themes-rtl/light/bulma.min.css')
+    .sass('node_modules/@enso-ui/themes/bulma/dark-rtl.scss', 'public/themes-rtl/dark/bulma.min.css')
     .js('resources/js/enso.js', 'public/js')
     .extract([
         '@enso-ui/accessories/bulma', '@enso-ui/bulma', '@enso-ui/card/bulma',
@@ -56,9 +57,10 @@ mix
         'vue-router', 'vuedraggable', 'vuex',
     ])
     .js('resources/js/tableExample.js', 'public/js')
-    .js('resources/js/selectExample.js', 'public/js')
-    .sourceMaps();
+    .js('resources/js/selectExample.js', 'public/js');
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.sourceMaps();
 }
